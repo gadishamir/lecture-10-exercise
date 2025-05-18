@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    .tabs { margin-bottom: 1em; }
+    .tab { display: inline-block; padding: 0.5em 1em; cursor: pointer; border: 1px solid #ccc; border-bottom: none; background: #f9f9f9; }
+    .tab.active { background: #fff; font-weight: bold; }
+    .tab-content { border: 1px solid #ccc; padding: 1em; background: #fff; }
+    .message { margin: 1em 0; color: green; }
+    .error { color: red; }
+    .post-list { list-style: none; padding: 0; }
+    .post-list li { margin-bottom: 1em; border-bottom: 1px solid #eee; padding-bottom: 0.5em; }
+    label { display: block; margin-top: 0.5em; }
+    input, textarea { width: 100%; }
+    button { margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Post Manager</h1>
+  <div class="tabs">
+    <span class="tab active" data-tab="view">View</span>
+    <span class="tab" data-tab="create">Create</span>
+    <span class="tab" data-tab="edit">Edit</span>
+    <span class="tab" data-tab="delete">Delete</span>
+  </div>
+  <div id="message" class="message" style="display:none;"></div>
+  <div id="error" class="message error" style="display:none;"></div>
+  <div id="tab-view" class="tab-content">
+    <ul id="posts" class="post-list"></ul>
+  </div>
+  <div id="tab-create" class="tab-content" style="display:none;">
+    <form id="create-form">
+      <label>Title: <input type="text" id="create-title" required></label>
+      <label>Content: <textarea id="create-content" required></textarea></label>
+      <button type="submit">Create Post</button>
+    </form>
+  </div>
+  <div id="tab-edit" class="tab-content" style="display:none;">
+    <form id="edit-form">
+      <label>Post ID: <input type="text" id="edit-id" required></label>
+      <label>Title: <input type="text" id="edit-title" required></label>
+      <label>Content: <textarea id="edit-content" required></textarea></label>
+      <button type="submit">Update Post</button>
+    </form>
+  </div>
+  <div id="tab-delete" class="tab-content" style="display:none;">
+    <form id="delete-form">
+      <label>Post ID: <input type="text" id="delete-id" required></label>
+      <button type="submit">Delete Post</button>
+    </form>
+  </div>
+  <script src="api.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
